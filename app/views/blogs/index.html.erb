@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Achieve</title>
+    <link rel="stylesheet" href="../../assets/stylesheet/application.css">
+</head>
+<body>
+  <header>
+    <ul class="left">
+      <li class="left-li"><a href="#">Achieve</a></li>
+      <li class="left-li"><a href="#">お問い合わせ</a></li>
+    </ul>
+    <ul class="right">
+      <li class="right-li"><a href="#">サインアップ</a></li>
+      <li class="right-li"><a href="#">ログイン</a></li>
+    </ul>
+  </header>
+  <section class="about">
+    <div class="about-content">
+      <h1>Tweets All</h1>
+      <p><%= notice %></p>
+      <table>
+        <tr>
+          <th>tweets</th>
+        </tr>
+      <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= blog.user.name %></td>
+          <td><%= blog.title %></td>
+          <td><%= blog.content %></td>
+          <td><%= link_to '詳細',blog_path(blog.id) %></td>
+          <td><%= link_to '編集',edit_blog_path(blog.id), data: { confirm: '編集しますか？' } %></td>
+          <td><%= link_to '削除',blog_path(blog.id), method: :delete , data: { confirm: '削除しますか？' } %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <td><%= link_to 'ツイート画面に戻る',new_blog_path %></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <footer>
+    <p>株式会社DOUSHIN</p>
+    <p>© 2020 Copyright DOUSHIN Corp.</p>
+  </footer>
+</body>
+</html>
